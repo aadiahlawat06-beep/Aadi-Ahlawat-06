@@ -1,20 +1,28 @@
 #include <stdio.h>
 
-int main() {
-    int arr[10] = {10, 20, 30, 40};
-    int n = 4, pos = 2, value = 25;
-    int i;
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
 
-    for(i = n; i >= pos; i--) {
-        arr[i] = arr[i - 1];
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
     }
+}
 
-    arr[pos - 1] = value;
-    n++;
+int main() {
+    int arr[] = {12, 11, 13, 5, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
 
-    for(i = 0; i < n; i++) {
+    insertionSort(arr, n);
+
+    for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
+    printf("\n");
 
     return 0;
 }
